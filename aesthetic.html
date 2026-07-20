@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>美學工程 | SOLIDIM Smart Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#191c1f",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary-fixed": "#dfe3e3",
+                        "primary-container": "#171d1c",
+                        "on-tertiary-fixed": "#191c1f",
+                        "on-secondary-container": "#566d00",
+                        "surface-dim": "#dcd9d9",
+                        "surface-tint": "#5a5f5f",
+                        "secondary-fixed-dim": "#b1d446",
+                        "on-tertiary-container": "#818487",
+                        "surface-container": "#f0edec",
+                        "secondary": "#506600",
+                        "outline": "#737877",
+                        "tertiary-fixed": "#e1e2e6",
+                        "inverse-primary": "#c3c7c7",
+                        "inverse-surface": "#313030",
+                        "surface": "#fcf9f8",
+                        "on-secondary-fixed": "#161e00",
+                        "on-primary-container": "#808584",
+                        "surface-bright": "#fcf9f8",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#ebe7e7",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#44474a",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed-dim": "#c3c7c7",
+                        "on-secondary-fixed-variant": "#3c4d00",
+                        "on-primary-fixed": "#171d1c",
+                        "secondary-fixed": "#ccf05f",
+                        "secondary-container": "#ccf05f",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c7c6",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface-variant": "#434847",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "on-primary-fixed-variant": "#434847",
+                        "on-background": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-v-space-lg": "160px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "gutter": "24px",
+                        "section-v-space-md": "120px",
+                        "max-width": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-xl-mobile": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .masonry-item-large {
+            grid-row: span 2;
+        }
+
+        .transition-soft {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-primary:hover {
+            background-color: #ccf05f !important;
+            color: #000101 !important;
+            transform: scale(1.02);
+        }
+
+        .cta-ghost:hover {
+            background-color: rgba(0, 1, 1, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-primary">
+    <!-- 1. Glassmorphic Sticky NavBar -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/10 transition-all duration-300">
+        <div
+            class="max-w-max-width mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6">
+            <div class="flex items-center gap-6 lg:gap-10 xl:gap-12">
+                <a href="index.html" class="flex items-center"><img alt="SOLIDIM"
+                        class="h-10 lg:h-12 w-auto object-contain flex-shrink-0" src="assets/logo_white.png"
+                        style="aspect-ratio: 1024/367;" width="1024" height="367" /></a>
+                <div
+                    class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 font-label-caps text-sm lg:text-base font-bold uppercase tracking-widest">
+                    <a class="text-white/70 hover:text-secondary-fixed transition-colors duration-300"
+                        href="experience.html">生活體驗</a>
+                    <a class="text-secondary-fixed border-b-2 border-secondary-fixed font-bold"
+                        href="aesthetic.html">美學工程</a>
+                    <a class="text-white/70 hover:text-secondary-fixed transition-colors duration-300"
+                        href="contact.html">展間預約</a>
+                    <a class="text-white/70 hover:text-secondary-fixed transition-colors duration-300"
+                        href="index.html#foundation">關於碩鼎</a>
+                </div>
+            </div>
+            <a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer"
+                class="bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps px-6 py-3 rounded-lg transition-soft uppercase tracking-widest text-center inline-block hover:bg-white hover:text-primary">
+                聯絡我們
+            </a>
+        </div>
+    </nav>
+    <!-- 2. Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwYqHH17GtrWebXfC-mq3e0X4SdfQGWjkHmRkSZqPWuLEQT2ACw2sFXtOl3hpIBroIQbQ3tfmgC4I6ajBX7B2eJQ6_-mKIMF5N91HKlFOqB7-O0uDP-r_Ixz2QEoUxr1zJ_ripKv6BJ998QdiBLrwivafaEu9adAd3ZFj6B1KWYA56huJ8_shaxk6EY8_3zv3NgHCfRAxt7kDCXsr0Wu4aeqvUowH7mCwx5FQPx6_Mtlo3cWUWTsiXtMRoLeH9dA5CHywF1Upu-K47" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-max-width mx-auto px-margin-desktop text-white">
+            <div class="max-w-2xl">
+                <span
+                    class="inline-block font-label-caps text-label-caps uppercase tracking-[0.2em] mb-6 border-l-2 border-secondary-fixed pl-4">AESTHETIC
+                    ENGINEERING</span>
+                <h1 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-8 leading-tight">
+                    工事精準度，<br />就是美學。
+                </h1>
+                <p class="font-body-md text-body-md text-white/80 mb-12 max-w-lg leading-relaxed">
+                    設計，就是對生活方式的理解與沈澱
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer"
+                        class="bg-white text-black px-10 py-5 rounded-lg font-label-caps text-label-caps uppercase tracking-widest cta-primary transition-soft text-center inline-block">
+                        預約設計師諮詢
+                    </a>
+                    <a href="experience.html"
+                        class="border border-white text-white px-10 py-5 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover:bg-white/10 transition-soft text-center inline-block">
+                        瀏覽客制方案
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 3. SERVICE S.O.P Section -->
+    <section class="py-section-v-space-lg bg-white">
+        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <!-- Left Column: Section Header & Tag -->
+                <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+                    <span
+                        class="inline-block font-label-caps text-sm text-secondary-fixed-dim uppercase tracking-widest font-bold font-mono">[
+                        / SERVICE S.O.P ]</span>
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary font-bold">美學工程
+                    </h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        我們提供完整的建築級技術規格與服務流程，協助業主、室內設計師與建築師將複雜的智慧科技無縫整合進高品質的空間語彙中。
+                    </p>
+                </div>
+
+                <!-- Right Column: 7 SERVICE S.O.P Steps -->
+                <div class="lg:col-span-7 space-y-5">
+                    <!-- Step 1 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    1. 了解需求 / 引導需求</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    深度探訪業主生活習慣與空間美學期待，協助梳理最合適的全屋智能需求。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    2. 介紹服務內容（我們能做什麼）</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    全面解析專業控制系統、模組化功能與硬體工藝，清晰呈現各級整合服務能量。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    3. 配置圖確認：平配圖、燈光迴路圖、開關插座配置圖、空調配置圖</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    繪製建築級系統平面圖、燈光迴路圖、面板配置圖與 VRV 空調介面圖。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    4. 確認需求、報價簽約</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    精準對齊技術規格與品牌配備，提供透明權責預算書與合約簽訂保障。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    5. 工程界面溝通：電路配置、網路配置</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    與室內設計師、弱電工程師現場會勘，嚴格規範線路埋設與網路基底。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    6. 系統初始設定</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    進行設備連網測試、通訊協定對碼、動態調光場景與智慧自動化邏輯編程。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div
+                        class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:border-secondary-fixed-dim transition-all duration-300 group">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="text-secondary-fixed-dim font-bold text-xl font-mono flex-shrink-0 mt-0.5">/</span>
+                            <div>
+                                <h4
+                                    class="font-headline-lg text-[19px] text-primary font-bold mb-2 group-hover:text-secondary-fixed-dim transition-colors">
+                                    7. 教育訓練與維護</h4>
+                                <p class="text-on-surface-variant font-body-md text-sm leading-relaxed">
+                                    交付直覺化操作手冊、現場引導業主與家人輕鬆上手，並提供長期售後技術維護支援。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- HARDWARE AESTHETICS GALLERY -->
+    <section class="py-section-v-space-lg bg-surface-container-low overflow-hidden">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+            <div class="mb-20 text-center md:text-left">
+                <p class="font-label-caps text-label-caps text-on-tertiary-container uppercase mb-4">Hardware Gallery
+                </p>
+                <h2
+                    class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">
+                    硬體美學</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <!-- Switch -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="Switch" src="assets/hardware_switch_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">Switch
+                            <span class="font-light">開關</span></h4>
+                    </div>
+                </div>
+                <!-- Ceiling Fan -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="Ceiling Fan"
+                            src="assets/hardware_ceiling_fan_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">Ceiling fan
+                            <span class="font-light">吸頂扇</span></h4>
+                    </div>
+                </div>
+                <!-- Curtain -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="Curtain" src="assets/hardware_curtain_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">Curtain
+                            <span class="font-light">窗簾</span></h4>
+                    </div>
+                </div>
+                <!-- Bathroom Accessories -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="Bathroom Accessories"
+                            src="assets/hardware_bathroom_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">Bathroom
+                            <span class="font-light">衛浴</span></h4>
+                    </div>
+                </div>
+                <!-- WaterLab -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="WaterLab" src="assets/hardware_waterlab_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">WaterLab
+                            <span class="font-light">全戶淨水飲水</span></h4>
+                    </div>
+                </div>
+                <!-- Home Cinema -->
+                <div class="staggered-item flex flex-col gap-6">
+                    <div class="aspect-[4/5] overflow-hidden rounded-lg shadow-xl border border-white/10">
+                        <img class="w-full h-full object-cover" alt="Home Cinema" src="assets/hardware_cinema_bg.jpg" />
+                    </div>
+                    <div>
+                        <h4 class="text-[16px] md:text-[18px] font-semibold text-primary tracking-wide mb-2">Home cinema
+                            <span class="font-light">家庭劇院</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 6. CTA Section -->
+    <section class="py-section-v-space-lg bg-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-full"
+                style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+        </div>
+        <div class="max-w-max-width mx-auto px-margin-desktop text-center relative z-10">
+            <h2 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-12 text-primary">將設計轉化為現實。</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-16 max-w-2xl mx-auto">
+                您的美學堅持，值得最強大的技術支撐。與我們的專家共同探討，如何將智能系統優雅地隱藏在您的設計之中。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer"
+                    class="bg-primary text-on-primary px-12 py-6 rounded-lg font-label-caps text-label-caps uppercase tracking-widest cta-primary transition-soft text-center inline-block">
+                    預約實體展間
+                </a>
+                <a href="experience.html"
+                    class="border border-primary text-primary px-12 py-6 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary hover:text-white transition-soft text-center inline-block">
+                    瀏覽安裝專案
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- 7. Footer -->
+    <!-- Premium Footer -->
+    <footer class="bg-tertiary py-section-v-space-md text-on-tertiary">
+        <div class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+            <!-- Brand Column -->
+            <div class="space-y-8">
+                <div>
+                    <a href="index.html" class="inline-block">
+                        <img alt="SOLIDIM" class="h-10 md:h-12 w-auto object-contain" src="assets/logo_footer_green.png" />
+                    </a>
+                </div>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white/10 transition-all text-white"
+                        href="#"><span class="material-symbols-outlined text-[18px]">public</span></a>
+                    <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white/10 transition-all text-white"
+                        href="#"><span class="material-symbols-outlined text-[18px]">share</span></a>
+                </div>
+            </div>
+            <!-- Navigation Column -->
+            <div class="md:pl-12">
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Navigation</h5>
+                <ul class="space-y-4 font-body-md">
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="experience.html">生活體驗</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="aesthetic.html">美學工程</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="contact.html">展間預約</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="index.html#foundation">關於碩鼎</a></li>
+                </ul>
+            </div>
+            <!-- Contact Column -->
+            <div>
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Contact</h5>
+                <ul class="space-y-4 font-body-md">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-outline text-[18px]">mail</span>
+                        <span class="text-on-tertiary-container">contact@solidimtw.com</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-outline text-[18px]">location_on</span>
+                        <span class="text-on-tertiary-container">台中市豐原區三豐路二段17巷52弄27-9號</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Newsletter Column -->
+            <div>
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Newsletter</h5>
+                <p class="text-on-tertiary-container mb-6 text-sm">訂閱最新智能美學動態與案例分享</p>
+                <form class="flex flex-col gap-3">
+                    <input
+                        class="bg-white/5 border-0 border-b border-white/20 text-white placeholder:text-white/30 focus:ring-0 focus:border-secondary transition-all py-3"
+                        placeholder="Your Email Address" type="email" />
+                    <button
+                        class="bg-white text-primary px-6 py-3 rounded-lg font-label-caps text-label-caps hover:bg-secondary-fixed transition-all mt-2">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        <div
+            class="max-w-max-width mx-auto px-margin-desktop mt-section-v-space-md pt-8 border-t border-white/10 text-center">
+            <p class="text-on-tertiary-container text-xs opacity-60">
+                © 2026 SOLIDIM Design Co., Ltd. 碩鼎設計股份有限公司
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Micro-interaction for material items
+        document.querySelectorAll('.masonry-item-large, .h-80').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('img').style.transform = 'scale(1.08)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+
+        // Scroll revealing for elements
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-soft', 'translate-y-10', 'opacity-0');
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

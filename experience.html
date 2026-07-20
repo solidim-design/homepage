@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "on-secondary-fixed": "#161e00",
+                        "secondary": "#506600",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#171d1c",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary-container": "#566d00",
+                        "surface": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#3c4d00",
+                        "primary-container": "#171d1c",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c3c7c6",
+                        "on-tertiary-container": "#818487",
+                        "secondary-fixed": "#ccf05f",
+                        "secondary-fixed-dim": "#b1d446",
+                        "tertiary-container": "#191c1f",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f6f3f2",
+                        "on-background": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary-fixed": "#191c1f",
+                        "on-primary-fixed-variant": "#434847",
+                        "inverse-surface": "#313030",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-high": "#ebe7e7",
+                        "surface-bright": "#fcf9f8",
+                        "background": "#fcf9f8",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#dfe3e3",
+                        "on-tertiary-fixed-variant": "#44474a",
+                        "secondary-container": "#ccf05f",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "primary-fixed-dim": "#c3c7c7",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0edec",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#5a5f5f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c3c7c7",
+                        "on-surface-variant": "#434847",
+                        "on-primary-container": "#808584",
+                        "tertiary-fixed": "#e1e2e6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737877"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-v-space-lg": "160px",
+                        "gutter": "24px",
+                        "section-v-space-md": "120px",
+                        "margin-mobile": "24px",
+                        "max-width": "1440px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-xl-mobile": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "display-xl-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .architectural-divider {
+            border-bottom: 1px solid #000101;
+        }
+        .hover-accent:hover {
+            background-color: #ccf05f;
+            color: #000101;
+        }
+        .text-shadow-sm {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .staggered-item:nth-child(even) {
+            transform: translateY(40px);
+        }
+        @media (max-width: 768px) {
+            .staggered-item:nth-child(even) {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- NAVIGATION: TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/10 transition-all duration-300">
+<div class="max-w-max-width mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6">
+<div class="flex items-center gap-6 lg:gap-10 xl:gap-12">
+<a href="index.html" class="flex items-center">
+<img alt="SOLIDIM" class="h-10 lg:h-12 w-auto object-contain flex-shrink-0" src="assets/logo_white.png" style="aspect-ratio: 1024/367;" width="1024" height="367"/>
+</a>
+<div class="hidden md:flex gap-4 lg:gap-6 xl:gap-8">
+<a class="font-label-caps text-sm lg:text-base font-bold uppercase tracking-widest text-secondary-fixed border-b-2 border-secondary-fixed" href="experience.html">生活體驗</a>
+<a class="font-label-caps text-sm lg:text-base font-bold uppercase tracking-widest text-white/70 hover:text-secondary-fixed transition-colors duration-300" href="aesthetic.html">美學工程</a>
+<a class="font-label-caps text-sm lg:text-base font-bold uppercase tracking-widest text-white/70 hover:text-secondary-fixed transition-colors duration-300" href="contact.html">展間預約</a>
+<a class="font-label-caps text-sm lg:text-base font-bold uppercase tracking-widest text-white/70 hover:text-secondary-fixed transition-colors duration-300" href="index.html#foundation">關於碩鼎</a>
+</div>
+</div>
+<a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer" class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 active:scale-95 text-center inline-block">
+                聯絡我們
+            </a>
+</div>
+</nav>
+<main>
+<!-- HERO SECTION -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-black/20 z-10"></div>
+<img class="w-full h-full object-cover" alt="生活體驗" src="assets/hero_experience_bg.png"/>
+</div>
+<div class="relative z-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto w-full">
+<div class="max-w-3xl space-y-8 animate-fade-in">
+<div class="inline-flex items-center gap-3 px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 text-white font-label-caps text-[10px] tracking-[0.2em]">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                        Hey! Siri 幫我打開電燈
+                    </div>
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-white tracking-tighter drop-shadow-lg">
+                        光感與舒適，<br/>分寸在手。
+                    </h1>
+<p class="font-body-md text-body-md text-white/90 max-w-xl leading-relaxed">
+                        體驗生活風格、設計與智能選擇的無縫融合。以消費者友好的視角，探索全屋自動化。
+                    </p>
+<div class="flex flex-col sm:flex-row gap-6 pt-4">
+<a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-10 py-5 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover-accent transition-all duration-300 shadow-2xl text-center inline-block">
+                            開始規劃我的智慧家
+                        </a>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- LIVING SCENARIOS (BENTO GRID) -->
+<section class="py-section-v-space-lg px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<div class="mb-16">
+<p class="font-label-caps text-label-caps text-on-tertiary-container uppercase mb-4">Living Scenarios</p>
+<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6">LifeSmart</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">為您的日常作息量身打造專屬氛圍，讓科技隱形，讓體感隨行。</p>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+
+<!-- 5 CORE SMART HOME FEATURES (Custom Row Grouping Layout, No Icons) -->
+
+<!-- ROW 1: 環境溫度控制 & 智慧照明調光 (並排) -->
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-xl h-[460px] border-b border-primary/20 hover:border-secondary-fixed transition-all duration-300">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="環境溫度控制" src="assets/climate_control_bg.png" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 p-8 flex flex-col justify-between z-10">
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed/20 border border-secondary-fixed/40 rounded-full text-secondary-fixed font-label-caps text-xs tracking-widest uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    22°C 恆溫控制
+                </span>
+            </div>
+            <div>
+                <span class="font-label-caps text-xs text-white/60 uppercase tracking-widest block mb-1">Climate Control & VRV</span>
+                <h3 class="font-headline-lg-mobile text-white font-bold tracking-tight">環境溫度控制</h3>
+            </div>
+            <p class="text-white/85 font-body-md leading-relaxed text-sm md:text-base">
+                全屋微氣候動態調控，整合精準溫濕度感測器與智能空調，自動維繫最適宜的體感溫度與室內含氧量。
+            </p>
+        </div>
+        <div class="pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/70 font-label-caps">
+            <span>獨立分區：主臥 / 客廳 / 書房</span>
+            <span class="text-secondary-fixed font-bold">VRV 智慧節能模式</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-xl h-[460px] border-b border-primary/20 hover:border-secondary-fixed transition-all duration-300">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="智慧照明調光" src="assets/smart_lighting_bg.png" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 p-8 flex flex-col justify-between z-10">
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed/20 border border-secondary-fixed/40 rounded-full text-secondary-fixed font-label-caps text-xs tracking-widest uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    0.1% 精準調光
+                </span>
+            </div>
+            <div>
+                <span class="font-label-caps text-xs text-white/60 uppercase tracking-widest block mb-1">Smart Lighting & Dimming</span>
+                <h3 class="font-headline-lg-mobile text-white font-bold tracking-tight">智慧照明調光</h3>
+            </div>
+            <p class="text-white/85 font-body-md leading-relaxed text-sm md:text-base">
+                支援極致微無段調光與自然晝夜色溫流轉（2700K - 6500K），賦予空間豐富的情緒氛圍與光影靈魂。
+            </p>
+        </div>
+        <div class="pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/70 font-label-caps">
+            <span>色溫流轉：晝光律動模式</span>
+            <span class="text-secondary-fixed font-bold">PWM / KNX 協定</span>
+        </div>
+    </div>
+</div>
+
+<!-- ROW 2: 影音與家庭影院 & 智能窗簾自動化 (並排) -->
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-xl h-[460px] border-b border-primary/20 hover:border-secondary-fixed transition-all duration-300">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="影音與家庭影院" src="assets/home_theater_bg.png" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 p-8 flex flex-col justify-between z-10">
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed/20 border border-secondary-fixed/40 rounded-full text-secondary-fixed font-label-caps text-xs tracking-widest uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    多區域沉浸環繞影音
+                </span>
+            </div>
+            <div>
+                <span class="font-label-caps text-xs text-white/60 uppercase tracking-widest block mb-1">Audio-Visual & Cinema</span>
+                <h3 class="font-headline-lg-mobile text-white font-bold tracking-tight">影音與家庭影院</h3>
+            </div>
+            <p class="text-white/85 font-body-md leading-relaxed text-sm md:text-base">
+                多區域高傳真音響系統與 4K 劇院連動，一鍵即刻入席專屬沉浸式視聽盛宴。
+            </p>
+        </div>
+        <div class="pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/70 font-label-caps">
+            <span>劇院模式 · 空間音場調校</span>
+            <span class="text-secondary-fixed font-bold">Panoramic Audio-Visual Sync</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-span-12 md:col-span-6 group relative overflow-hidden rounded-xl h-[460px] border-b border-primary/20 hover:border-secondary-fixed transition-all duration-300">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="智能窗簾自動化" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcCAXdVSI8hTV6RpCsuUsoe5ieOc_tHW8X3PbkSo7he6GU0VjdkuQ2Uum39qXG0a5_nBZ_dhXypV7eiyNtXK7vLCU6PQPDAMeOk0OPjiV8SrcIy6nvacGPw2SYzJijyoMWd94wzI-pat9IKai-9vmZCFbKVzxzI-CnQz9x2e_tfddeMZ7fOYmI7NskdCr0Fj-8IkzMxnkr7FVsbYDbTUxjYVqepwImgyOkIcNDJ3oOtvCIbpU2fdmtQeLjQqP_1KVWfmH-N337Hjgi" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 p-8 flex flex-col justify-between z-10">
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed/20 border border-secondary-fixed/40 rounded-full text-secondary-fixed font-label-caps text-xs tracking-widest uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    下午3:45分 · 開合度 65%
+                </span>
+            </div>
+            <div>
+                <span class="font-label-caps text-xs text-white/60 uppercase tracking-widest block mb-1">Motorized Shading Automation</span>
+                <h3 class="font-headline-lg-mobile text-white font-bold tracking-tight">智能窗簾自動化</h3>
+            </div>
+            <p class="text-white/85 font-body-md leading-relaxed text-sm md:text-base">
+                配合時間設定自動開合雙層窗簾與電動百葉，兼顧自然採光與極致隱私。
+            </p>
+        </div>
+        <div class="pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/70 font-label-caps">
+            <span>時間設定控制 · 靜音馬達</span>
+            <span class="text-secondary-fixed font-bold">Automated Shading System</span>
+        </div>
+    </div>
+</div>
+
+<!-- ROW 3: 安防與門禁 (獨立一排) -->
+<div class="col-span-12 group relative overflow-hidden rounded-xl h-[480px] border-b border-primary/20 hover:border-secondary-fixed transition-all duration-300">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="安防與門禁" src="assets/smart_security_bg.png" />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/30 p-8 md:p-12 flex flex-col justify-between z-10">
+        <div class="space-y-6 max-w-2xl">
+            <div class="flex items-center gap-4">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-fixed/20 border border-secondary-fixed/40 rounded-full text-secondary-fixed font-label-caps text-xs tracking-widest uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    大門門鎖：已安全上鎖
+                </span>
+            </div>
+            <div>
+                <span class="font-label-caps text-xs text-white/60 uppercase tracking-widest block mb-2">Smart Security & Access</span>
+                <h3 class="font-headline-lg-mobile md:font-headline-lg text-white font-bold tracking-tight">安防與門禁</h3>
+            </div>
+            <p class="text-white/85 font-body-md leading-relaxed text-base md:text-lg">
+                生物辨識門禁、動態監控巡檢與周界感應聯防，構築全時段防護的靜謐安全網。
+            </p>
+        </div>
+        <div class="pt-6 border-t border-white/15 flex items-center justify-between text-xs text-white/70 font-label-caps">
+            <span>3D 人臉辨識 · 即時告警連動</span>
+            <span class="text-secondary-fixed font-bold">All-Time Security Patrol</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 03 -->
+<div class="col-span-12 group relative overflow-hidden rounded-xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="電影模式 / Cinema mode" src="assets/cinema_mode_bg.png"/>
+<div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center text-center px-margin-mobile">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-white mb-6">電影模式 / Cinema mode</h3>
+<a href="contact.html#booking" class="border border-white text-white px-8 py-3 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 text-center inline-block">
+                            探索情境
+                        </a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-section-v-space-lg px-margin-mobile text-center relative overflow-hidden bg-primary">
+<!-- Animated subtle light effect -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_#ccf05f_0%,_transparent_70%)]"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto space-y-12">
+<h2 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-white leading-tight">
+                    準備好升級您的<br/>居住空間了嗎？
+                </h2>
+<a href="https://lin.ee/QswAnln" target="_blank" rel="noopener noreferrer" class="bg-secondary-fixed text-on-secondary-fixed px-12 py-6 rounded-lg font-label-caps text-label-caps uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-500 transform hover:scale-105 shadow-2xl text-center inline-block">
+                    開始規劃我的智慧家
+                </a>
+</div>
+</section>
+</main>
+    <!-- Premium Footer -->
+    <footer class="bg-tertiary py-section-v-space-md text-on-tertiary">
+        <div class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+            <!-- Brand Column -->
+            <div class="space-y-8">
+                <div>
+                    <a href="index.html" class="inline-block">
+                        <img alt="SOLIDIM" class="h-10 md:h-12 w-auto object-contain" src="assets/logo_footer_green.png" />
+                    </a>
+                </div>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white/10 transition-all text-white"
+                        href="#"><span class="material-symbols-outlined text-[18px]">public</span></a>
+                    <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white/10 transition-all text-white"
+                        href="#"><span class="material-symbols-outlined text-[18px]">share</span></a>
+                </div>
+            </div>
+            <!-- Navigation Column -->
+            <div class="md:pl-12">
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Navigation</h5>
+                <ul class="space-y-4 font-body-md">
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="experience.html">生活體驗</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="aesthetic.html">美學工程</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="contact.html">展間預約</a></li>
+                    <li><a class="text-on-tertiary-container hover:text-secondary-fixed transition-colors" href="index.html#foundation">關於碩鼎</a></li>
+                </ul>
+            </div>
+            <!-- Contact Column -->
+            <div>
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Contact</h5>
+                <ul class="space-y-4 font-body-md">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-outline text-[18px]">mail</span>
+                        <span class="text-on-tertiary-container">contact@solidimtw.com</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-outline text-[18px]">location_on</span>
+                        <span class="text-on-tertiary-container">台中市豐原區三豐路二段17巷52弄27-9號</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Newsletter Column -->
+            <div>
+                <h5 class="font-label-caps text-label-caps text-white mb-8 tracking-widest uppercase">Newsletter</h5>
+                <p class="text-on-tertiary-container mb-6 text-sm">訂閱最新智能美學動態與案例分享</p>
+                <form class="flex flex-col gap-3">
+                    <input
+                        class="bg-white/5 border-0 border-b border-white/20 text-white placeholder:text-white/30 focus:ring-0 focus:border-secondary transition-all py-3"
+                        placeholder="Your Email Address" type="email" />
+                    <button
+                        class="bg-white text-primary px-6 py-3 rounded-lg font-label-caps text-label-caps hover:bg-secondary-fixed transition-all mt-2">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        <div
+            class="max-w-max-width mx-auto px-margin-desktop mt-section-v-space-md pt-8 border-t border-white/10 text-center">
+            <p class="text-on-tertiary-container text-xs opacity-60">
+                © 2026 SOLIDIM Design Co., Ltd. 碩鼎設計股份有限公司
+            </p>
+        </div>
+    </footer>
+<script>
+        // Micro-interaction for scroll reveals
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-10', 'duration-1000');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.staggered-item, h2, h1, .group').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Simple navbar background shift on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body></html>
