@@ -7,17 +7,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Preload Critical LCP Hero Image -->
-    <link rel="preload" as="image" href="assets/showroom_hero_bg.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/showroom_hero_bg_mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/showroom_hero_bg.webp" media="(min-width: 768px)" fetchpriority="high" />
     <!-- Compiled Static Production Tailwind CSS -->
     <link rel="stylesheet" href="css/styles.css" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB00GYHWM3"></script>
+    <!-- Google Tag (gtag.js) - Deferred Loading for Ultra Fast LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-XB00GYHWM3');
+      function loadGA() {
+        if (window.gaLoaded) return;
+        window.gaLoaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XB00GYHWM3';
+        document.head.appendChild(script);
+        gtag('config', 'G-XB00GYHWM3');
+      }
+      if (document.readyState === 'complete') {
+        setTimeout(loadGA, 2500);
+      } else {
+        window.addEventListener('load', function() { setTimeout(loadGA, 2500); });
+      }
+      window.addEventListener('scroll', loadGA, { once: true, passive: true });
+      window.addEventListener('touchstart', loadGA, { once: true, passive: true });
     </script>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -112,7 +127,7 @@
                 <!-- Drawer Header -->
                 <div class="flex items-center justify-between pb-6 border-b border-white/10">
                     <a href="index.html" class="inline-block">
-                        <img loading="lazy" decoding="async" alt="SOLIDIM" class="h-8 w-auto object-contain" src="assets/logo_footer_green.webp" />
+                        <img width="753" height="152" loading="lazy" decoding="async" alt="SOLIDIM" class="h-8 w-auto object-contain" src="assets/logo_footer_green.webp" />
                     </a>
                     <button id="mobile-menu-close" aria-label="Close Menu" class="text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors">
                         <span class="material-symbols-outlined text-2xl">close</span>
@@ -154,8 +169,10 @@
     <!-- Hero Section -->
     <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img fetchpriority="high" decoding="async" alt="Luxury showroom interior" class="w-full h-full object-cover"
-                src="assets/showroom_hero_bg.webp" />
+            <picture>
+                <source media="(max-width: 767px)" srcset="assets/showroom_hero_bg_mobile.webp" />
+                <img fetchpriority="high" decoding="async" alt="Luxury Showroom Interior" class="w-full h-full object-cover" src="assets/showroom_hero_bg.webp" width="1920" height="1080" />
+            </picture>
             <div class="absolute inset-0 bg-black/30"></div>
         </div>
         <div class="relative z-10 text-center px-margin-mobile md:px-0 max-w-4xl">
@@ -261,7 +278,7 @@
             <div class="space-y-8">
                 <div>
                     <a href="index.html" class="inline-block">
-                        <img loading="lazy" decoding="async" alt="SOLIDIM" class="h-10 md:h-12 w-auto object-contain" src="assets/logo_footer_green.webp" />
+                        <img width="753" height="152" loading="lazy" decoding="async" alt="SOLIDIM" class="h-10 md:h-12 w-auto object-contain" src="assets/logo_footer_green.webp" />
                     </a>
                 </div>
                 <div class="flex gap-4">
